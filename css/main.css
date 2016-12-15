@@ -1,0 +1,196 @@
+
+body
+{
+    background-color: #202020;
+
+}
+
+#wrapper
+{
+    margin-top: 3em;
+    border: 2px solid black;
+    background-color: #303030;
+    height: 100%;
+    min-height: 100%;
+    padding: 0px;
+    color: #eeeeee;
+
+    -webkit-box-shadow: 0px 0px 54px 0px rgba(0,0,0,0.53);
+    -moz-box-shadow: 0px 0px 54px 0px rgba(0,0,0,0.53);
+    box-shadow: 0px 0px 54px 0px rgba(0,0,0,0.53);
+}
+
+#innerwrapper
+{
+    padding: 1em;
+}
+
+#menu
+{
+    padding: 0;
+}
+
+img.bannerimg
+{
+    width: 100%;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3px;
+
+}
+
+.float-right
+{
+    float: right;
+}
+
+.center-content
+{
+    text-align: center;
+}
+
+.center-block
+{
+    margin: auto;
+}
+
+.nav-brand
+{
+    background-image: url(../images/brand-logo.png);
+    width: 5em;
+}
+
+.navbar
+{
+    align-content: center;
+    border-radius: 0px;
+    background-color: #202020;
+    color: #eeeeee;
+}
+
+nav li:hover
+{
+    background-color: #7D82B0;
+}
+
+
+.navbar-default .navbar-nav > .active > a
+{
+    background-color: #535993;
+    color: #ffffff;
+}
+
+.theme-block-wrapper
+{
+    padding-top: 15px;
+    height: 50px;
+}
+
+.theme-block
+{
+    margin: auto;
+}
+
+.theme
+{
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 3px 10px;
+    border: 3px solid black;
+    font-weight: bold;
+}
+
+.theme-block .dark-theme
+{
+    color: white;
+    background-color: #303030;
+}
+
+.theme-block .light-theme
+{
+    color: black;
+    background-color: #D1E9F9;
+
+}
+
+#content
+{
+    min-height: 500px;
+}
+
+/* Normale Elemente*/
+h1
+{
+    color: #7d82b0;
+}
+
+h2
+{
+    color: #535993;
+}
+
+h3
+{
+    color: #535993;
+}
+
+p
+{
+    color: #eeeeee;
+}
+
+/* Formklassen */
+
+.formelement
+{
+    margin: 1em
+}
+
+input, textarea
+{
+    color: #000000;
+}
+
+/* Canvas */
+#canvas
+{
+    display: block;
+    margin: auto;
+    border: 5px dashed white;
+}
+
+@media screen and (min-width: 700px)
+{
+    #canvas-container
+    {
+        display: block;
+    }
+    #canvas-hidden
+    {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 699px)
+{
+    #canvas-container
+    {
+        display: none;
+    }
+    #canvas-hidden
+    {
+        display: block;
+    }
+}
+
+/*Footerstuff*/
+
+footer
+{
+    padding: 1em 3em;
+    margin: 0px;
+    background-color: #101010;
+    border-color: white;
+    border-top: 3px solid #efefef;
+}

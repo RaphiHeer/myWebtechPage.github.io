@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html lang="zxx">
+	<head>
+		<title>Pi ist meine Lieblingszahl!</title>
+		<meta charset="utf-8" />
+        <meta name="author" content="Raphael Heer" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="icon" href="images/favicon.png" type="image/png">
+	</head>
+	<body>
+
+        <!-- Umfasst die gesamte Box der Seite -->
+        <div id="wrapper" class="container">
+
+            <!-- Umfasst die gesamte Box der Seite aussgeschlossen der Fusszeile -->
+            <div id="innerwrapper">
+
+            <div id="topbar">
+
+                <!-- Banner Image -->
+                <div class="col-sd-12 hidden-xs">
+                    <img src="images/banner.jpg" class="bannerimg" alt="page_banner">
+                </div>
+
+                <!-- Gesamte Navigationsleiste (fuer grosse und kleine Bildschirme) -->
+                <nav id="menu" class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+
+                        <!-- Hamburgermenu fuer xs-displays -->
+                        <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavigation" aria-expanded="false" aria-controls="mynavigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                  </button>
+                        </div>
+
+                        <!-- Menu fuer displays, die groesser als xs sind -->
+                        <div id="mynavigation" class="collapse navbar-collapse">
+                            <div class="nav-wrapper">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a id="link-home" href="#mynavigation">Home</a></li>
+                                    <li><a id="link-loremipsum" href="#mynavigation">Lorem Ipsum Page</a></li>
+                                    <li><a id="link-canvas" href="#mynavigation">Canvas</a></li>
+                                    <li><a id="link-formular" href="#mynavigation">Formular</a></li>
+                                    <li><a id="link-textundbild" href="#mynavigation">Text und Bilder</a></li>
+                                </ul>
+                            </div>
+                            <div class="theme-block-wrapper pull-right">
+                                <div class="theme-block">
+                                    Choose your Style:
+                                    <a id="dark-theme" class="theme dark-theme" href="#">Dark</a>
+                                    <a id="light-theme" class="theme light-theme" href="#">Light</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Umfasst alle Content Elemente -->
+            <div id="content" class="container-fluid">
+
+                <!-- Ab hier kommen die content-divs rein, die per AJAX geladen werden -->
+
+            </div>
+        </div>
+
+
+        <!-- Fusszeile -->
+        <footer>
+            <p>© by Raphael Heer                </p>
+        </footer>
+    </div>
+        <script>
+            $(document).ready(function(){
+
+                /* Set style */
+
+                // Set cookie (function from w3cschools.com)
+                function setCookie(cname, cvalue, exdays)
+                {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                    var expires = "expires="+ d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+
+                // Get cookie (function from w3cschools.com)
+                function getCookie(cname)
+                {
+                    var name = cname + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i = 0; i <ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ')
+                        {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0)
+                        {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+
+                // Set style
+                function setStyle(styleName)
+                {
+                    $(".selectedTheme").removeClass("selectedTheme");
+
+                    if(styleName == "dark")
+                    {
+                        $("#lightCSS").remove();
+                        $("#dark-theme").addClass("selectedTheme");
+                        setCookie("style", "darkStyle", Date.now());
+                    }
+                    else if(styleName == "light")
+                    {
+                        if($("#lightCSS").length == 0)
+                        {
+                            $("head").append('<link id="lightCSS" rel="stylesheet" href="css/lightTheme.css" type="text/css" />');
+                        }
+
+                        $("#light-theme").addClass("selectedTheme");
+                        setCookie("style", "lightStyle" , Date.now());
+                    }
+                    else
+                    {
+                        setStyle("dark");
+                    }
+                }
+
+                var styleCookie = getCookie("style");
+
+                if(styleCookie != "darkStyle" && styleCookie != "lightStyle")
+                {
+                    setStyle("dark");
+                    styleCookie = getCookie("style");
+                }
+
+                if(styleCookie == "lightStyle")
+                {
+                    setStyle("light");
+                }
+
+                /* AJAX part*/
+                var currentPage = "";
+                var hideShowTimeout = 700;
+
+                function switchContent(showPageName)
+                {
+                    // Change active link in nav
+                    $("li.active").removeClass("active");
+                    $("#link-" + showPageName).parent().addClass("active");
+
+                    // Change showed content in div
+                    $("#content").children().hide();
+                    $("#page-"+showPageName).slideDown(hideShowTimeout);
+                }
+
+                function loadPage(pageName)
+                {
+                    // Do not close and show current page...
+                    if(currentPage == pageName)
+                        return;
+
+                    if($("#page-"+pageName).length < 1)
+                    {
+                        $.ajax(
+                        {
+                            url: "/pages/" + pageName + ".html",
+                            success: function(loadedContent)
+                            {
+                                // Append page
+                                $("#content").append(loadedContent);
+                                switchContent(pageName);
+                                currentPage = pageName;
+                            }
+                         });
+                    }
+                    else
+                    {
+                        switchContent(pageName);
+                        currentPage = pageName;
+                    }
+                }
+
+
+
+                /* Add events */
+                $("#link-home").on("click",function(){ loadPage("home")});
+                $("#link-canvas" ).on("click",function(){ loadPage("canvas")});
+                $("#link-formular" ).on("click",function(){ loadPage("formular")});
+                $("#link-loremipsum" ).on("click",function(){ loadPage("loremipsum")});
+                $("#link-textundbild" ).on("click",function(){ loadPage("textundbild")});
+
+                $("#dark-theme").on("click", function(){setStyle("dark");});
+                $("#light-theme").on("click", function(){setStyle("light");});
+
+                /* Load startpage */
+                loadPage("home");
+            });
+        </script>
+    </body>
+</html>

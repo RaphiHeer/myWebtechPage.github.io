@@ -1,0 +1,62 @@
+<div id="page-formular" style="display: none;">
+    <h1>Kontaktformular</h1>
+    <form id="myform">
+    <div class="formelement">
+        <div><label for="vorname">Vorname:</label></div>
+        <div><input id="vorname" type="text" required="required"></div>
+    </div>
+
+    <div class="formelement">
+        <div>
+            <label for="nachname">Nachname:</label>
+        </div>
+
+        <div>
+        <input id="nachname" type="text">
+            </div>
+    </div>
+
+    <div class="formelement">
+        <div><label for="email">E-Mail:</label></div>
+        <div><input id="email" type="email" required="required"></div>
+    </div>
+
+    <div class="formelement">
+        <div><label for="secfavnumber">Ihre 2. Lieblingszahl nach Pi</label></div>
+        <div><input id="secfavnumber" type="number" required="required"></div>
+    </div>
+
+    <div class="formelement">
+        <div><label for"">Ihr HTML-Entwicklungstool</label></div>
+        <div><input list="html-tool">
+
+            <datalist id="html-tool">
+              <option value="Notepad">
+              <option value="Notepad++">
+              <option value="Netbeans">
+              <option value="Brackets">
+              <option value="CompoZer">
+        </datalist></div>
+    </div>
+
+
+    <div class="formelement">
+        <div><label for="message">Ihre Nachricht:</label></div>
+        <div><textarea id="message" required="required"></textarea></div>
+    </div>
+
+    <div class="formelement">
+        <input id="submitbtn" class=".btn-default" type="submit">
+    </div>
+
+
+    </form>
+
+    <script>
+        $("#myform").submit(function(event) {
+            event.preventDefault();
+            $("#submitbtn").remove();
+            $("#myform").append("<p>Das Formular wurde versendet. Vielen Danke für Ihre Teilnahme!</p>");
+        });
+    </script>
+</div>

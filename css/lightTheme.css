@@ -1,0 +1,91 @@
+
+body
+{
+    background-color: #82CAFA;
+
+}
+
+#wrapper
+{
+    background-color: rgba(255,255,255, 0.8);
+    color: #123456;
+}
+
+.navbar
+{
+    align-content: center;
+    border-radius: 0px;
+    background-color: #aaaaaa;
+    color: black;
+    border: 2px dashed #000000;
+}
+
+nav li:hover
+{
+    background-color: #4FA3E9;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color: #123456;
+}
+
+.navbar-default .navbar-nav > .active > a
+{
+    background-color: #2B8DDE;
+    color: #ffffff;
+}
+
+.theme-block
+{
+}
+
+/* Normale Elemente*/
+h1
+{
+    color: #535993;
+
+}
+
+h2
+{
+    color: #535993;
+
+}
+
+h3
+{
+    color: #7d82b0;
+}
+
+p
+{
+    color: #123456;
+}
+
+/* Formklassen */
+
+.formelement
+{
+    margin: 1em
+}
+
+input, textarea
+{
+    color: #000000;
+}
+
+/* Canvas */
+#canvas
+{
+    border-color: black;
+}
+
+/*Footerstuff*/
+
+footer
+{
+    background-color: #aaaaaa;
+    border-color: black;
+    border-top: 3px solid #000000;
+}

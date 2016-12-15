@@ -1,0 +1,62 @@
+<div id="page-canvas" style="display: none;">
+    <h1>Canvas Page</h1>
+    <p>Auf dieser Seite befindet sich ein Canvas-Element. Mit einem Klick auf "Canvas zeichen wird etwas gezeichnet. Viel Spass!"</p>
+    <div id="canvas-container">
+        <input id="canvasbtn" class=".btn-default" type="button" value="Canvas zeichnen">
+        <canvas id="canvas" width="700" height="400"></canvas>
+        <img id="canvas-img" src="/images/piforcanvas.png" alt="Image for Canvas" style="display: none;">
+    </div>
+    <div id="canvas-hidden">
+        <p class="text-warning">Ihr Bildschirm ist zu klein! Ihr Bildschirm muss mindestens 700px breit sein um das Canvas korrekt anzuzeigen! Bei Ihnen scheint dies nicht der Fall zu sein...</p>
+    </div>
+
+    <script type="text/javascript">
+        var piString = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213";
+        var piPos = 0;
+
+        function printPiDecimal(ctx)
+        {
+            // This for will print all numbers
+            for(var y = 30; y < 400; y += 35)
+            {
+                // This for will print one line of Numbers
+                for(var x = 5; x < 690; x += 15)
+                {
+                    // This function will print one decimal of pi
+                    ctx.fillText(piString.charAt(piPos), x, y);
+                    piPos++;
+                }
+            }
+        }
+
+        function draw()
+        {
+            // Get canvas element
+            ctx = document.getElementById('canvas').getContext('2d');
+
+            // Set shadow
+            ctx.shadowOffsetX = 3;
+            ctx.shadowOffsetY = 3;
+            ctx.shadowBlur = 2;
+            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+
+            // Add background
+            var img=document.getElementById("canvas-img");
+            ctx.drawImage(img,0,0);
+
+            // Set gradient
+            var gradient = ctx.createLinearGradient(0,0,700,400);
+            gradient.addColorStop("0","magenta");
+            gradient.addColorStop("0.5","blue");
+            gradient.addColorStop("1.0","red");
+
+            // Set text style
+            ctx.font = "20px Times New Roman";
+            ctx.fillStyle = gradient;
+
+            // Print the decimals of pi
+            printPiDecimal(ctx);
+		}
+		$("#canvasbtn").on("click", draw);
+    </script>
+</div>
