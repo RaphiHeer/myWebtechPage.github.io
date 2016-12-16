@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="zxx">
+<html lang="de">
 	<head>
 		<title>Pi ist meine Lieblingszahl!</title>
 		<meta charset="utf-8" />
         <meta name="author" content="Raphael Heer" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.css" />
@@ -19,64 +18,64 @@
             <!-- Umfasst die gesamte Box der Seite aussgeschlossen der Fusszeile -->
             <div id="innerwrapper">
 
-            <div id="topbar">
+				<div id="topbar">
 
-                <!-- Banner Image -->
-                <div class="col-sd-12 hidden-xs">
-                    <img src="images/banner.jpg" class="bannerimg" alt="page_banner">
-                </div>
+					<!-- Banner Image -->
+					<div class="col-sd-12 hidden-xs">
+						<img src="images/banner.jpg" class="bannerimg" alt="page_banner">
+					</div>
 
-                <!-- Gesamte Navigationsleiste (fuer grosse und kleine Bildschirme) -->
-                <nav id="menu" class="navbar navbar-default" role="navigation">
-                    <div class="container-fluid">
+					<!-- Gesamte Navigationsleiste (fuer grosse und kleine Bildschirme) -->
+					<nav id="menu" class="navbar navbar-default" role="navigation">
+						<div class="container-fluid">
 
-                        <!-- Hamburgermenu fuer xs-displays -->
-                        <div class="navbar-header">
-                                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavigation" aria-expanded="false" aria-controls="mynavigation">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                  </button>
-                        </div>
+							<!-- Hamburgermenu fuer xs-displays -->
+							<div class="navbar-header">
+									  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavigation" aria-expanded="false" aria-controls="mynavigation">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									  </button>
+							</div>
 
-                        <!-- Menu fuer displays, die groesser als xs sind -->
-                        <div id="mynavigation" class="collapse navbar-collapse">
-                            <div class="nav-wrapper">
-                                <ul class="nav navbar-nav">
-                                    <li class="active"><a id="link-home" href="#mynavigation">Home</a></li>
-                                    <li><a id="link-loremipsum" href="#mynavigation">Lorem Ipsum Page</a></li>
-                                    <li><a id="link-canvas" href="#mynavigation">Canvas</a></li>
-                                    <li><a id="link-formular" href="#mynavigation">Formular</a></li>
-                                    <li><a id="link-textundbild" href="#mynavigation">Text und Bilder</a></li>
-                                </ul>
-                            </div>
-                            <div class="theme-block-wrapper pull-right">
-                                <div class="theme-block">
-                                    Choose your Style:
-                                    <a id="dark-theme" class="theme dark-theme" href="#">Dark</a>
-                                    <a id="light-theme" class="theme light-theme" href="#">Light</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+							<!-- Menu fuer displays, die groesser als xs sind -->
+							<div id="mynavigation" class="collapse navbar-collapse">
+								<div class="nav-wrapper">
+									<ul class="nav navbar-nav">
+										<li class="active"><a id="link-home" href="#mynavigation">Home</a></li>
+										<li><a id="link-loremipsum" href="#mynavigation">Lorem Ipsum Page</a></li>
+										<li><a id="link-canvas" href="#mynavigation">Canvas</a></li>
+										<li><a id="link-formular" href="#mynavigation">Formular</a></li>
+										<li><a id="link-textundbild" href="#mynavigation">Text und Bilder</a></li>
+									</ul>
+								</div>
+								<div class="theme-block-wrapper pull-right">
+									<div class="theme-block">
+										Choose your Style:
+										<a id="dark-theme" class="theme dark-theme" href="#">Dark</a>
+										<a id="light-theme" class="theme light-theme" href="#">Light</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
 
-            <!-- Umfasst alle Content Elemente -->
-            <div id="content" class="container-fluid">
+				<!-- Umfasst alle Content Elemente -->
+				<div id="content" class="container-fluid">
 
-                <!-- Ab hier kommen die content-divs rein, die per AJAX geladen werden -->
+					<!-- Ab hier kommen die content-divs rein, die per AJAX geladen werden -->
 
-            </div>
-        </div>
+				</div>
+			</div>
 
 
         <!-- Fusszeile -->
         <footer>
-            <p>© by Raphael Heer                </p>
+            <p>© by Raphael Heer</p>
         </footer>
-    </div>
+		</div>
         <script>
             $(document).ready(function(){
 
@@ -137,6 +136,7 @@
                     }
                 }
 
+				// Set style from cookie. If no cookie is set, set the default style cookie
                 var styleCookie = getCookie("style");
 
                 if(styleCookie != "darkStyle" && styleCookie != "lightStyle")
